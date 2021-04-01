@@ -16,7 +16,7 @@ mongoose.connect(process.env.DB_STRING,{
 //...........................................................................
 const port=8000||PORT
 
-app.get("/",(req,res)=>{
+app.get("/home",(req,res)=>{
     res.status(200).json({
         message:"hello and welcome"
     })
