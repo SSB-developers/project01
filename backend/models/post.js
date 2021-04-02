@@ -1,8 +1,12 @@
 const mongoose = require('mongoose');
+const {ObjectId}=mongoose.Schema
 
 const postSchema = new mongoose.Schema(
     {
-    userName : String,
+    author:{
+        type:ObjectId,
+        ref:"User"
+    }
     img : {
         type : String,
         default : ""
@@ -20,4 +24,4 @@ const postSchema = new mongoose.Schema(
 {timestamps : true}
 );
 
-module.exports = mongoose.model("post", postSchema);
+module.exports = mongoose.model("Post", postSchema);
