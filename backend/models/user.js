@@ -34,13 +34,10 @@ const userSchema = new mongoose.Schema(
     role: {
       type: Number,
       default: 0,
-    },
-    
-    
+    }, 
   },
   { timestamps: true }
 );
-
 
 module.exports = mongoose.model("User", userSchema);
 //Subhajeet : Hum user ka banaya hai tum socho Posts ka Schema kaisa hoga...
