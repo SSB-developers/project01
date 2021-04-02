@@ -6,7 +6,7 @@ const postSchema = new mongoose.Schema(
     author:{
         type:ObjectId,
         ref:"User"
-    }
+    },
     img : {
         type : String,
         default : ""
