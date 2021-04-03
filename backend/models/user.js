@@ -40,4 +40,4 @@ const userSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("User", userSchema);
-//Subhajeet : Hum user ka banaya hai tum socho Posts ka Schema kaisa hoga...
+
