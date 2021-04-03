@@ -8,17 +8,29 @@ function handleError(err) {
 
 function createToken(id) {
     return jwt.sign({id}, 'ssb', {
-        time : 1000*60*60*24
+        expiresIn : 1000*60*60*24
     });
 }
 module.exports.signUp = async (req,res)=>{
-    res.send("This is signup");
+    
     const {email, password} = req.body;
     try {
         const user = await User.create({ email, password }); // temporary user
         const token = createToken(user._id);
         res.cookie('jwt', token, { httpOnly: true, time: 1000*60*60*24 });
-        res.status(201).json({ user: user._id }); 
+        user.save((err,user)=>{
+            if(err){
+                return res.status(400).json({
+                    error:"something went wrong in saving"
+                })
+            }
+            return res.status(200).send({
+                user,
+                token
+            })
+        })
+        
+
 
     } catch(err) {
         const errors = handleError(err);
