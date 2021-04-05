@@ -3,7 +3,7 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 
 function handleError(err) {
-    console.log(err);
+    console.log(err); // all the errors will be handled together
 }
 
 function createToken(id) {
