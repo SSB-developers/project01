@@ -29,9 +29,6 @@ module.exports.signUp = async (req,res)=>{
                 token
             })
         })
-        
-
-
     } catch(err) {
         const errors = handleError(err);
         res.json(errors);
@@ -39,17 +36,14 @@ module.exports.signUp = async (req,res)=>{
 }
 
 module.exports.login = async (req,res)=>{
-    res.send("This is login");
     const {email, password} = req.body;
     try {
-        const user = await User.create({ email, password }); // temporary user
+        const user = await User.login({ email, password }); // static login method is defined in userSchema
         const token = createToken(user._id);
         res.cookie('jwt', token, { httpOnly: true, time: 1000*60*60*24 });
         res.status(201).json({ user: user._id }); 
-
     } catch(err) {
         const errors = handleError(err);
         res.json(errors);
     }
-
 }

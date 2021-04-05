@@ -10,8 +10,10 @@ require("dotenv").config()
 app.use(cors())
 app.use(cookieParser())
 app.use(bodyParser.json())
+
 //Out port is here
 const port=8000||PORT
+
 //Data bse connections has created here...............
 mongoose.connect(process.env.DB_STRING,{
     useNewUrlParser:true,
